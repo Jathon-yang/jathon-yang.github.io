@@ -1,0 +1,316 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Laravel导入自定义扩展类 | Jathon的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="创建自定义类在 app/Extensions 目录下创建一个文件 MyClass.php 123456namespace App\Extensions;class MyClass&amp;#123;    public function run()&amp;#123;        return &apos;Hello world&apos;;    &amp;#125;&amp;#125; 将自定义类添加到Ioc容器在 app/Providers">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Laravel导入自定义扩展类">
+<meta property="og:url" content="http://jathon-yang.github.io/2015/10/10/Laravel导入自定义扩展类/index.html">
+<meta property="og:site_name" content="Jathon的个人博客">
+<meta property="og:description" content="创建自定义类在 app/Extensions 目录下创建一个文件 MyClass.php 123456namespace App\Extensions;class MyClass&amp;#123;    public function run()&amp;#123;        return &apos;Hello world&apos;;    &amp;#125;&amp;#125; 将自定义类添加到Ioc容器在 app/Providers">
+<meta property="og:updated_time" content="2015-10-10T15:03:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Laravel导入自定义扩展类">
+<meta name="twitter:description" content="创建自定义类在 app/Extensions 目录下创建一个文件 MyClass.php 123456namespace App\Extensions;class MyClass&amp;#123;    public function run()&amp;#123;        return &apos;Hello world&apos;;    &amp;#125;&amp;#125; 将自定义类添加到Ioc容器在 app/Providers">
+  
+    <link rel="alternative" href="/atom.xml" title="Jathon的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+	<body>
+		<div id="container">
+			<div class="left-col">
+			<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jathon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+			</div>
+			<div class="mid-col">
+			  <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jathon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jathon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+			  <div class="body-wrap"><article id="post-Laravel导入自定义扩展类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/10/Laravel导入自定义扩展类/" class="article-date">
+  	<time datetime="2015-10-10T14:18:30.000Z" itemprop="datePublished">2015-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Laravel导入自定义扩展类
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="创建自定义类"><a href="#创建自定义类" class="headerlink" title="创建自定义类"></a><strong>创建自定义类</strong></h4><p>在 <strong>app/Extensions</strong> 目录下创建一个文件 <strong>MyClass.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Extensions</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'Hello world'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="将自定义类添加到Ioc容器"><a href="#将自定义类添加到Ioc容器" class="headerlink" title="将自定义类添加到Ioc容器"></a><strong>将自定义类添加到Ioc容器</strong></h4><p>在 <strong>app/Providers</strong> 目录下创建一个文件 <strong>MyClassServiceProvider.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">Providers</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">ServiceProvider</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClassServiceProvider</span> <span class="keyword">extends</span> <span class="title">ServiceProvider</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span>  </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;app[<span class="string">'MyClass'</span>] = <span class="keyword">$this</span>-&gt;app-&gt;share(</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="params">($app)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> \App\Extensions\MyClass();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="实现伪静态方法调用"><a href="#实现伪静态方法调用" class="headerlink" title="实现伪静态方法调用"></a><strong>实现伪静态方法调用</strong></h4><p>在 <strong>app/Facades</strong> 目录下创建一个文件 <strong>MyClassFacades.php</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">namespace app\<span class="type">Facades</span>;</div><div class="line">use <span class="type">Illuminate</span>\<span class="type">Support</span>\<span class="type">Facades</span>\<span class="type">Facade</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClassFacades</span> <span class="keyword">extends</span> <span class="title">Facade</span></span>&#123;</div><div class="line">	<span class="keyword">protected</span> static function getFacadeAccessor()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="symbol">'MyClas</span>s';</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="自动加载并声明一个调用别名"><a href="#自动加载并声明一个调用别名" class="headerlink" title="自动加载并声明一个调用别名"></a><strong>自动加载并声明一个调用别名</strong></h4><p>在 <strong>app/config/app.php</strong> 中的 <strong>providers</strong> 中添加如下配置：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'providers'</span> =&gt; <span class="built_in">array</span>(   </div><div class="line">	<span class="symbol">'app</span>\<span class="type">Providers</span>\<span class="type">MyClassServiceProvider'</span></div><div class="line">),</div></pre></td></tr></table></figure>
+<p>在 <strong>app/config/app.php</strong> 中的 <strong>aliases</strong> 中添加别名：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'aliases'</span> =&gt; <span class="built_in">array</span>(</div><div class="line">	<span class="symbol">'MyClass'</span> =&gt;  <span class="symbol">'app</span>\<span class="type">Facades</span>\<span class="type">MyClassFacades'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>最后我们就可以在自己的项目中用 <strong>MyClass::run()</strong> 的方式调用自定义类里的函数了。</p>
+<p>上面所有的目录路径和文件名都可以根据自己项目的实际结构进行规划，不一定要按照我上面的路径和文件名来，只要你的目录结构不影响你项目的开发即可。</p>
+<p>如果想详细了解<a href="http://www.golaravel.com/laravel/docs/5.0/facades/" target="_blank" rel="external">Facades</a>,可以查看官方文档的介绍。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/09/23/用Hexo搭建Blog 并发布到Github/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          用Hexo搭建Blog 并发布到Github
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/10/10/Apache-Nginx开启SSL双向认证/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Apache/Nginx开启SSL双向认证</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+			  <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jathon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+			</div>
+			
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+	  </div>
+	</body>
+	</html>

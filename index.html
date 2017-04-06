@@ -1,0 +1,625 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Jathon的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Jathon的个人博客">
+<meta property="og:url" content="http://jathon-yang.github.io/index.html">
+<meta property="og:site_name" content="Jathon的个人博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jathon的个人博客">
+  
+    <link rel="alternative" href="/atom.xml" title="Jathon的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+	<body>
+		<div id="container">
+			<div class="left-col">
+			<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jathon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+			</div>
+			<div class="mid-col">
+			  <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jathon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jathon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+			  <div class="body-wrap">
+  
+    <article id="post-Windows下C语言连接Oracle数据库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/10/10/Windows下C语言连接Oracle数据库/" class="article-date">
+  	<time datetime="2016-10-10T14:18:30.000Z" itemprop="datePublished">2016-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/10/Windows下C语言连接Oracle数据库/">Windows下C语言连接Oracle数据库</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近公司有个项目需要用到Oracle数据库，我负责前期的调研。由于项目要用到C和PHP两种语言，所以先收集这两种语言连接Oracle的方法。PHP使用的是Laravel框架，直接使用了Laravel-OCI8进行数据库连接，毫无压力的连接成功了。C使用的是Ocilib进行数据库连接，在这里踩了几个坑，卡了几天，今天有空整理下，防止下次继续掉坑。</p>
+<blockquote>
+<p>提示：本文使用的是win7 64位去连接远程的 Oracle 11g数据库</p>
+</blockquote>
+<h2 id="OCILIB介绍"><a href="#OCILIB介绍" class="headerlink" title="OCILIB介绍"></a><strong>OCILIB介绍</strong></h2><p><a href="https://github.com/vrogier/ocilib" target="_blank" rel="external">OCILIB</a>是一个跨平台的Oracle驱动程序，可提供非常快速和可靠地访问Oracle数据库。它提供了一个丰富，功能齐全，并易于使用的API 。OCILIB 支持运行的所有Oracle平台。</p>
+<h2 id="OCI环境搭建"><a href="#OCI环境搭建" class="headerlink" title="OCI环境搭建"></a><strong>OCI环境搭建</strong></h2><p>由于OCILIB是对OCI进行二次封装，所以在使用OCILIB前，需要安装OCI环境，我们只要安装好Instant Client就能完成OCI环境的搭建。</p>
+<h3 id="Instant-Client下载"><a href="#Instant-Client下载" class="headerlink" title="Instant Client下载"></a><strong>Instant Client下载</strong></h3><p>首先我们从官方下载自己系统所对应的<a href="http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html" target="_blank" rel="external">Instant Client</a>，由于我的系统是win7 64位的，所以选择了 <code>Instant Client for Microsoft Windows (x64)</code>下的 <code>instantclient-basic-windows.x64-12.1.0.2.0.zip</code></p>
+<blockquote>
+<p>提示：页面下需要点击 Accept License Agreement 后才能开始下载。</p>
+</blockquote>
+<h3 id="Instant-Client安装"><a href="#Instant-Client安装" class="headerlink" title="Instant Client安装"></a><strong>Instant Client安装</strong></h3><p>我们将下载的文件解压到电脑任意位置(本文将以解压到 <strong>D:\instantclient_12_1</strong> 为例)，然后添加以下环境变量:</p>
+<ul>
+<li>path =&gt; D:\instantclient_12_1</li>
+<li>TNS_ADMIN =&gt; D:\instantclient_12_1</li>
+<li>NLS_LANG =&gt; SIMPLIFIED CHINESE_CHINA.ZHS16GBK</li>
+</ul>
+<blockquote>
+<p>提示：path如果已经存在值的话，直接在尾部追加。</p>
+</blockquote>
+<h2 id="下载OCILIB"><a href="#下载OCILIB" class="headerlink" title="下载OCILIB"></a><strong>下载OCILIB</strong></h2><p>直接从<a href="https://github.com/vrogier/ocilib" target="_blank" rel="external">Github</a>上下载最新版即可，下载完成后将文件解压到任意位置(本文将以解压到 <strong>C:\ocilib </strong>为例)。</p>
+<h2 id="VS2010配置"><a href="#VS2010配置" class="headerlink" title="VS2010配置"></a><strong>VS2010配置</strong></h2><ol>
+<li>点击 <code>项目</code> - <code>属性</code> - <code>配置管理器</code>，新建一个X64平台(因为我下载的Instant Client是64位的，所以要用x64平台)</li>
+<li>点击 <code>项目</code> - <code>属性</code> - <code>配置属性</code> - <code>VC++ 目录</code>，在 包含目录 添加 C:\ocilib\include</li>
+<li>点击 <code>项目</code> - <code>属性</code> - <code>配置属性</code> - <code>链接器</code> - <code>常规</code>，在 附加库目录 添加 C:\ocilib\lib64</li>
+</ol>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a><strong>示例代码</strong></h2><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"stdafx.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ocilib.h"</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">if</span> defined(OCI_CHARSET_WIDE)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"ocilibw.lib"</span>)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">elif</span> defined(OCI_CHARSET_ANSI)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib, <span class="meta-string">"ociliba.lib"</span>)</span></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">err_handler</span><span class="params">(OCI_Error *err)</span></span></div><div class="line">&#123;</div><div class="line">   <span class="built_in">printf</span>(</div><div class="line">                <span class="string">"code  : ORA-%05i\n"</span></div><div class="line">                <span class="string">"msg   : %s\n"</span></div><div class="line">                <span class="string">"sql   : %s\n"</span>,</div><div class="line">                OCI_ErrorGetOCICode(err), </div><div class="line">                OCI_ErrorGetString(err),</div><div class="line">                OCI_GetSql(OCI_ErrorGetStatement(err))</div><div class="line">           );</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, _TCHAR* argv[])</span></span></div><div class="line">&#123;</div><div class="line">	</div><div class="line">	OCI_Connection* cn;</div><div class="line">    OCI_Statement* st;</div><div class="line">    OCI_Resultset* rs;</div><div class="line"></div><div class="line">    </div><div class="line">	OCI_Initialize(<span class="literal">NULL</span>, <span class="literal">NULL</span>, OCI_ENV_DEFAULT);</div><div class="line"></div><div class="line">	cn  = OCI_ConnectionCreate(<span class="string">"192.168.1.152:1521/TEST"</span>, <span class="string">"system"</span>, <span class="string">"123456"</span>, OCI_SESSION_DEFAULT);</div><div class="line">	</div><div class="line">	<span class="keyword">if</span>(cn == <span class="literal">NULL</span>)&#123;</div><div class="line">		err_handler(OCI_GetLastError());</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%i"</span>,OCI_GetVersionServer(cn));</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"连接失败！\n"</span>);</div><div class="line">	&#125;</div><div class="line">	st  = OCI_StatementCreate(cn);</div><div class="line"></div><div class="line">    OCI_ExecuteStmt(st, <span class="string">"select id,age from web_user"</span>);</div><div class="line"></div><div class="line">    rs = OCI_GetResultset(st);</div><div class="line">   </div><div class="line">	<span class="keyword">while</span> (OCI_FetchNext(rs))&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"code: %i, name %s\n"</span>, OCI_GetInt(rs, <span class="number">1</span>)  , OCI_GetString(rs, <span class="number">2</span>));</div><div class="line">	&#125;</div><div class="line">    </div><div class="line">    <span class="built_in">printf</span>(<span class="string">"\n%d row(s) fetched\n"</span>, OCI_GetRowCount(rs));</div><div class="line"></div><div class="line"></div><div class="line">    OCI_Cleanup();</div><div class="line"></div><div class="line">	</div><div class="line">	<span class="keyword">char</span> a[<span class="number">20</span>];</div><div class="line">	gets(a);</div><div class="line"></div><div class="line">    <span class="keyword">return</span> EXIT_SUCCESS;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>提示：程序运行时如果提示 计算机中丢失 ocilib<em>.dll，这里由于程序找不到ocilib</em>.dll造成的，只要将<br>C:\ocilib\lib64 加入path或者将 C:\ocilib\lib64 下的 ocilib*.dll<br>复制到程序目录就可以解决了。</p>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Window下使用GMP库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/Window下使用GMP库/" class="article-date">
+  	<time datetime="2016-08-20T13:18:35.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/Window下使用GMP库/">Window下使用GMP库</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="GMP介绍"><a href="#GMP介绍" class="headerlink" title="GMP介绍"></a><strong>GMP介绍</strong></h4><p>GMP是The GNU MP Bignum Library，是一个开源的数学运算库，它可以用于任意精度的数学运算，包括有符号整数、有理数和浮点数。它本身并没有精度限制，只取决于机器的硬件情况。<br>更多详情可能访问官方网站 <a href="https://gmplib.org/" target="_blank" rel="external">https://gmplib.org/</a></p>
+<h4 id="环境所需软件"><a href="#环境所需软件" class="headerlink" title="环境所需软件"></a><strong>环境所需软件</strong></h4><ul>
+<li><a href="https://sourceforge.net/projects/mingw/files/MinGW/" target="_blank" rel="external">MinGW</a></li>
+<li><a href="https://sourceforge.net/projects/mingw/files/MinGW/Extension/pexports/pexports-0.47/pexports-0.47-mingw32-bin.tar.xz/download" target="_blank" rel="external">pexports</a></li>
+</ul>
+<p>点击上面两个软件名就能下载对应的安装包，如果下载不了，可以到我的网盘上下载，地址如下：<br>链接: <a href="http://pan.baidu.com/s/1slw4YOP" target="_blank" rel="external">http://pan.baidu.com/s/1slw4YOP</a> 密码: 9a2h</p>
+<p>—— 这里是赶时间分割线 ——<br>如果你很赶时间，我网盘上也有已经编译好的.h .lib .dll文件，可以直接下载，当然在这里下载以后，下面的内容也可以不用看了，地址如下：<br>链接: <a href="http://pan.baidu.com/s/1bpaCP0z" target="_blank" rel="external">http://pan.baidu.com/s/1bpaCP0z</a> 密码: kaxw</p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a><strong>安装过程</strong></h4><p>1.安装MinGW<br>安装后组件选择”mingw32-base”,”mingw32-gcc-g++”,”mingw32-gmp”<br>安装组件的过程中需要保持网络连接正常。<br>本文假设MinGW的安装路径为默认的路径 C:\MinGW</p>
+<p>2.安装pexports<br>将下载回来的pexports.exe复制进 C:\MinGW\bin</p>
+<p>3.生成lib文件<br>到了这一步，GMP就已经在Windows里安装好了，我们只要将gmp.h和libgmp.lib文件载入我们的VS工程就可以使用GMP库了。<br>gmp.h 位于 C:\MinGW\include 目录下<br>libgmp.lib 则需要我们手动生成，我们可以根据 C:\MinGW\bin\libgmp-10.dll 来生成相应的lib文件，步骤如下：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd <span class="symbol">C:</span>\MinGW\bin</div><div class="line">pexports.exe libgmp-<span class="number">10</span>.dll &gt; libgmp-<span class="number">10</span>.<span class="keyword">def</span></div><div class="line"><span class="class"><span class="keyword">lib</span> /<span class="title">def</span>:<span class="title">libgmp</span>-10.<span class="title">def</span></span></div></pre></td></tr></table></figure>
+<p>这时目录下就会出现 libgmp.lib 文件了。</p>
+<p>如果提示 lib 命令不存在，请将VS的相关路径写入环境变量，比如我的是 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</p>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a><strong>使用示例</strong></h4><p>这里我以VS2010做示例，首先我们要将gmp.h和libgmp.lib文件载入工程。<br>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gmp.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">"libgmp-10.lib"</span>)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">mpz_t</span> t; <span class="comment">//mpz_t 为GMP内置大数类型</span></div><div class="line">	mpz_init(t); <span class="comment">//大数t使用前要进行初始化，以便动态分配空间</span></div><div class="line">	mpz_ui_pow_ui(t, <span class="number">2</span>, <span class="number">100</span>); <span class="comment">//GMP所有函数基本都是以mpz打头</span></div><div class="line">	gmp_printf(<span class="string">"2^100=%Zd\n"</span>, t); <span class="comment">//输出大数，大数的格式化标志为%Zd</span></div><div class="line">	mpz_clear(t);</div><div class="line">	scanf_s(<span class="string">"%s"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h4><p>写完以后才发现好像也不难，挺简单的，然而我竟然搞了一下午(一不小心就暴露智商了)，那就这样了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-使用x-sendfile提升PHP文件下载效率" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/21/使用x-sendfile提升PHP文件下载效率/" class="article-date">
+  	<time datetime="2015-10-21T14:34:35.000Z" itemprop="datePublished">2015-10-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/21/使用x-sendfile提升PHP文件下载效率/">使用x-sendfile提升PHP文件下载效率</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近做的项目有个工具库模块，需要实现工具的上传与下载。上传与下载都使用的是Laravel内置的方法，本来都没什么问题，今天无意上传了一个两百多M的文件，上传很顺利，但当点击下载时，发现会出现下载回来的数据不全的情况。暂时没找到是什么原因，估计是内存方面的问题。</p>
+<p>修改了几次代码后都无法解决，那就只能换一种方式了。多次搜索后，发现了一种直接返回 x-sendfile 头实现文件下载方式，完美的解决了我的问题。</p>
+<h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a><strong>Nginx</strong></h2><p>Nginx默认支持x-sendfile模式，所以使用起来十分方便。</p>
+<h5 id="配置虚拟域名的配置文件，添加如下内容"><a href="#配置虚拟域名的配置文件，添加如下内容" class="headerlink" title="配置虚拟域名的配置文件，添加如下内容"></a><strong>配置虚拟域名的配置文件，添加如下内容</strong></h5><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#伪造下载路径</span></div><div class="line">location <span class="meta-keyword">/down/</span>&#123;</div><div class="line">	internal; <span class="meta">#只允许内部访问，防止盗链</span></div><div class="line">	alias <span class="meta-keyword">/home/</span>www<span class="meta-keyword">/myweb/</span>public<span class="meta-keyword">/uploads/</span>utool/;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="PHP返回header头"><a href="#PHP返回header头" class="headerlink" title="PHP返回header头"></a><strong>PHP返回header头</strong></h5><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$filename = <span class="string">'test.zip'</span>;</div><div class="line">$file_path = <span class="string">'/down/test.zip'</span>;<span class="comment">//物理真实路径是 /home/www/myweb/public/uploads/utool/test.zip ，至于为什么请自行脑补</span></div><div class="line"><span class="keyword">header</span>(<span class="string">'Content-type: application/octet-stream'</span>);</div><div class="line"><span class="keyword">header</span>(<span class="string">'Content-Disposition: attachment; filename="'</span>.$filename.<span class="string">'"'</span>);</div><div class="line"><span class="keyword">header</span>(<span class="string">'X-Accel-Redirect:'</span>.$file_path);</div></pre></td></tr></table></figure>
+<p>就这么轻松的两步就实现了大文件的下载，是不是很简单。</p>
+<h2 id="Apache"><a href="#Apache" class="headerlink" title="Apache"></a><strong>Apache</strong></h2><p>Apache需要加载 module mod_xsendfile 模块来实现相对应的功能，所以稍微复杂一点</p>
+<h5 id="加载-module-mod-xsendfile"><a href="#加载-module-mod-xsendfile" class="headerlink" title="加载 module mod_xsendfile"></a><strong>加载 module mod_xsendfile</strong></h5><p>从<a href="https://github.com/nmaier/mod_xsendfile" target="_blank" rel="external">项目地址</a>上下载对应的 mod_xsendfile.so,放到apache的modules目录下.然后修改 http.conf ，添加如下内容</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute"><span class="nomarkup">LoadModule</span></span> xsendfile_module modules/mod_xsendfile.so</div></pre></td></tr></table></figure>
+<h5 id="开启-xsendfile"><a href="#开启-xsendfile" class="headerlink" title="开启 xsendfile"></a><strong>开启 xsendfile</strong></h5><p>修改虚拟域名的配置文件，添加如下内容</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 开启XSendFile</span></div><div class="line"><span class="attribute">XSendFile</span> <span class="literal">On</span></div><div class="line"><span class="section">&lt;Directory "D:/wamp/www/myweb/public/uploads/utool/"&gt;</span></div><div class="line">	<span class="comment"># 只允许本地链接，防止盗链</span></div><div class="line">	<span class="section">&lt;IfDefine APACHE24&gt;</span></div><div class="line">		<span class="attribute">Require</span> local </div><div class="line">	<span class="section">&lt;/IfDefine&gt;</span></div><div class="line"><span class="section">&lt;/Directory&gt;</span></div></pre></td></tr></table></figure>
+<h5 id="PHP返回header头-1"><a href="#PHP返回header头-1" class="headerlink" title="PHP返回header头"></a><strong>PHP返回header头</strong></h5><figure class="highlight lasso"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$filename = <span class="string">'test.zip'</span>;</div><div class="line">$file_path = <span class="string">'D:/wamp/www/myweb/public/uploads/utool/test.zip'</span>;</div><div class="line"><span class="keyword">header</span>(<span class="string">'Content-type: application/octet-stream'</span>);</div><div class="line"><span class="keyword">header</span>(<span class="string">'Content-Disposition: attachment; filename="'</span>.$filename.<span class="string">'"'</span>);</div><div class="line"><span class="keyword">header</span>(<span class="string">'X-Sendfile:'</span>.$file_path);</div></pre></td></tr></table></figure>
+<p>使用 x-sendfile 模式后，PHP只需返回header头，后续就不需要处理，所以效率有了明显提升。</p>
+<p>如果在下载过程中，出现中文文件名乱码的情况，可以使用函数 <strong>rawurlencode</strong> 对文件名做转码，这样就能解决乱码问题。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Apache-Nginx开启SSL双向认证" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/10/Apache-Nginx开启SSL双向认证/" class="article-date">
+  	<time datetime="2015-10-10T15:22:35.000Z" itemprop="datePublished">2015-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/10/Apache-Nginx开启SSL双向认证/">Apache/Nginx开启SSL双向认证</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="OpenSSL生成密钥证书"><a href="#OpenSSL生成密钥证书" class="headerlink" title="OpenSSL生成密钥证书 "></a><strong>OpenSSL生成密钥证书 </strong></h2><p>如果是付费的一般都会有现成的密钥证书，可以略过此步。</p>
+<h4 id="1-1-进入openssl目录"><a href="#1-1-进入openssl目录" class="headerlink" title="1.1 进入openssl目录"></a><strong>1.1 进入openssl目录</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># cd <span class="meta-string">&lt;openssl目录路径&gt;</span></span></div></pre></td></tr></table></figure>
+<p>在要生成证书的目录下建立几个文件和文件夹，目录结构如下<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="string">|-- demoCA</span></div><div class="line">  <span class="string">|-- demoCA/newcerts </span></div><div class="line">  <span class="string">|-- demoCA/index.txt </span></div><div class="line">  <span class="string">|-- demoCA/serial</span></div></pre></td></tr></table></figure></p>
+<p>在serial文件中写入第一个序列号“01”</p>
+<h4 id="1-2-设置openssl配置文件地址"><a href="#1-2-设置openssl配置文件地址" class="headerlink" title="1.2 设置openssl配置文件地址"></a><strong>1.2 设置openssl配置文件地址</strong></h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># set OPENSSL_CONF= <span class="meta-string">&lt;配置文件地址&gt;</span></span></div></pre></td></tr></table></figure>
+<h4 id="1-3-生成CA根证书"><a href="#1-3-生成CA根证书" class="headerlink" title="1.3 生成CA根证书"></a><strong>1.3 生成CA根证书</strong></h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># openssl req -new -x509 -keyout <span class="keyword">ca</span>.key -<span class="keyword">out</span> <span class="keyword">ca</span>.crt -days 8000</div></pre></td></tr></table></figure>
+<p>输入以上命令后，按提示依次国家缩写、省名、城市名、公司名、部门名、主机名、邮箱<br>Ps:以上各选项只能输入英文，不然会乱码</p>
+<h4 id="1-4-生成客户端密钥"><a href="#1-4-生成客户端密钥" class="headerlink" title="1.4 生成客户端密钥"></a><strong>1.4 生成客户端密钥</strong></h4><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># openssl genrsa -out client.<span class="type">key</span> <span class="number">1024</span></div></pre></td></tr></table></figure>
+<h4 id="1-5-生成证书请求"><a href="#1-5-生成证书请求" class="headerlink" title="1.5 生成证书请求"></a><strong>1.5 生成证书请求</strong></h4><figure class="highlight maxima"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># openssl req -<span class="built_in">new</span> -out client.csr -<span class="built_in">key</span> client.<span class="built_in">key</span></div></pre></td></tr></table></figure>
+<p>输入以上命令后，按提示依次国家缩写、省名、城市名、公司名、部门名、主机名、邮箱、密码、公司别名<br>Ps:以上各选项只能输入英文，不然会乱码</p>
+<h4 id="1-6-用CA证书为server-csr做签名"><a href="#1-6-用CA证书为server-csr做签名" class="headerlink" title="1.6 用CA证书为server.csr做签名"></a><strong>1.6 用CA证书为server.csr做签名</strong></h4><figure class="highlight stata"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># openssl <span class="keyword">ca</span> -<span class="keyword">in</span> client.csr -<span class="keyword">out</span> client.crt -cert <span class="keyword">ca</span>.crt -keyfile <span class="keyword">ca</span>.key -days 8000</div></pre></td></tr></table></figure>
+<h4 id="1-7-导出成浏览器能导入的证书"><a href="#1-7-导出成浏览器能导入的证书" class="headerlink" title="1.7 导出成浏览器能导入的证书"></a><strong>1.7 导出成浏览器能导入的证书</strong></h4><figure class="highlight clean"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># openssl pkcs12 -<span class="keyword">export</span> -inkey client.key -<span class="keyword">in</span> client.crt -out client.p12</div></pre></td></tr></table></figure>
+<p>这里需要输入密码(这里的密码就是导入证书时要用到的密码)</p>
+<p>这一步主要是生成一个可导入的证书，如果只是想开启单向认证可以略过此步。</p>
+<h4 id="1-8-移动证书与密钥"><a href="#1-8-移动证书与密钥" class="headerlink" title="1.8 移动证书与密钥"></a><strong>1.8 移动证书与密钥</strong></h4><p>我们将当前目录下的 ca.crt、ca.key、client.csr、client.crt、client.key、client.p12 都拷贝到 conf/ssl-client 目录下，没有就创建。</p>
+<h2 id="Apache开启方法"><a href="#Apache开启方法" class="headerlink" title="Apache开启方法"></a><strong>Apache开启方法</strong></h2><h4 id="2-1-修改-http-conf-文件"><a href="#2-1-修改-http-conf-文件" class="headerlink" title="2.1 修改 http.conf 文件"></a><strong>2.1 修改 http.conf 文件</strong></h4><h5 id="2-1-1-添加443端口的监听"><a href="#2-1-1-添加443端口的监听" class="headerlink" title="2.1.1 添加443端口的监听"></a><strong>2.1.1 添加443端口的监听</strong></h5><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute"><span class="nomarkup">Listen</span></span> 443</div></pre></td></tr></table></figure>
+<h4 id="2-1-2-去掉下面行首的-号-加入ssl模块"><a href="#2-1-2-去掉下面行首的-号-加入ssl模块" class="headerlink" title="2.1.2 去掉下面行首的 # 号(加入ssl模块)"></a><strong>2.1.2 去掉下面行首的 # 号</strong>(加入ssl模块)</h4><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#LoadModule ssl_module modules/mod_ssl.so</span></div></pre></td></tr></table></figure>
+<h3 id="2-2-修改需要开启ssl的域名配置文件（示例）"><a href="#2-2-修改需要开启ssl的域名配置文件（示例）" class="headerlink" title="2.2 修改需要开启ssl的域名配置文件（示例）"></a>2.2 <strong>修改需要开启ssl的域名配置文件</strong>（示例）</h3><figure class="highlight apache"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="section">&lt;VirtualHost *:443&gt;</span></div><div class="line">    <span class="attribute">ServerAdmin</span> www.test.com</div><div class="line">    <span class="attribute"><span class="nomarkup">DocumentRoot</span></span> <span class="string">"D:/wamp/www/test"</span></div><div class="line">    <span class="attribute"><span class="nomarkup">ServerName</span></span> test.com</div><div class="line">    <span class="attribute">ErrorLog</span> <span class="string">"logs/test.com-error.log"</span></div><div class="line">    <span class="attribute">CustomLog</span> <span class="string">"logs/test.com-access.log"</span> common</div><div class="line"></div><div class="line">    <span class="comment"># 开启HTTPS</span></div><div class="line">    <span class="attribute">SSLEngine</span> <span class="literal">on</span></div><div class="line">    <span class="attribute">SSLCertificateFile</span> <span class="string">"&lt;server.crt本地路径&gt;"</span></div><div class="line">    <span class="attribute">SSLCertificateKeyFile</span> <span class="string">"&lt;server.key本地路径&gt;"</span></div><div class="line"></div><div class="line">    <span class="comment"># 开启双向认证</span></div><div class="line">    <span class="attribute">SSLCACertificateFile</span> <span class="string">"&lt;ca.crt路径&gt;"</span></div><div class="line">    <span class="attribute">SSLCertificateChainFile</span> <span class="string">"&lt;client.crt路径&gt;"</span></div><div class="line">    <span class="attribute">SSLVerifyClient</span> require</div><div class="line">    <span class="attribute">SSLVerifyDepth</span>  10</div><div class="line"></div><div class="line">	<span class="section">&lt;Directory "D:/wamp/www/test"&gt;</span></div><div class="line">		<span class="attribute">AllowOverride</span> None</div><div class="line">		<span class="attribute"><span class="nomarkup">Options</span></span> None</div><div class="line">		<span class="attribute"><span class="nomarkup">Order</span></span> allow,deny</div><div class="line">		<span class="attribute"><span class="nomarkup">Allow</span></span> from <span class="literal">all</span></div><div class="line">	<span class="section">&lt;/Directory&gt;</span></div><div class="line"><span class="section">&lt;/VirtualHost&gt;</span></div></pre></td></tr></table></figure>
+<p>以上步骤完成后，重启Apache。这时再访问我们的网址就会提示 SSL 连接出错 ，我们只要双击刚刚生成的 <strong>client.p12</strong> 证书进行导入后，就可以正常访问了。</p>
+<p>如果在Windows下遇到Apache启动不了的情况，可以进入 <strong>我的电脑-&gt;管理-&gt;事件检查器-&gt;应用程序日志</strong> ，打开apache的错误报告，会有提示哪里出错了，一般都可以找到原因。</p>
+<h2 id="Nginx-开启方法"><a href="#Nginx-开启方法" class="headerlink" title="Nginx 开启方法"></a><strong>Nginx 开启方法</strong></h2><p>Nginx开启相对简单，只要修改配置文件就可以了。</p>
+<p>配置文件基本内容如下：<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="section">server</span> &#123;</div><div class="line">	<span class="comment"># 开启HTTPS</span></div><div class="line">	<span class="attribute">ssl</span> <span class="literal">on</span>;</div><div class="line">	<span class="attribute">ssl_certificate</span> &lt;client.crt路径&gt;</div><div class="line">	ssl_certificate_key &lt;server.key路径&gt;</div><div class="line">	ssl_protocols  SSLv3 TLSv1;</div><div class="line">	<span class="attribute">ssl_ciphers</span>  HIGH:!ADH:!EXPORT56:RC4+RSA:+MEDIUM;</div><div class="line">	<span class="attribute">ssl_prefer_server_ciphers</span>   <span class="literal">on</span>;</div><div class="line"></div><div class="line">	<span class="comment"># 开启双向认证</span></div><div class="line">	<span class="attribute">ssl_verify_client</span> <span class="literal">on</span>;</div><div class="line">	<span class="attribute">ssl_client_certificate</span> &lt;ca.crt路径&gt;</div><div class="line"></div><div class="line">	location <span class="regexp">~ \.php</span>&#123;</div><div class="line">		<span class="comment"># PHP开启HTTPS</span></div><div class="line">		<span class="attribute">fastcgi_param</span> HTTPS <span class="literal">on</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上的目录路径和文件名都是可以自定义的，不一定要按照我的来。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-Laravel导入自定义扩展类" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/10/Laravel导入自定义扩展类/" class="article-date">
+  	<time datetime="2015-10-10T14:18:30.000Z" itemprop="datePublished">2015-10-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/10/Laravel导入自定义扩展类/">Laravel导入自定义扩展类</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="创建自定义类"><a href="#创建自定义类" class="headerlink" title="创建自定义类"></a><strong>创建自定义类</strong></h4><p>在 <strong>app/Extensions</strong> 目录下创建一个文件 <strong>MyClass.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">App</span>\<span class="title">Extensions</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">()</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'Hello world'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="将自定义类添加到Ioc容器"><a href="#将自定义类添加到Ioc容器" class="headerlink" title="将自定义类添加到Ioc容器"></a><strong>将自定义类添加到Ioc容器</strong></h4><p>在 <strong>app/Providers</strong> 目录下创建一个文件 <strong>MyClassServiceProvider.php</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">namespace</span> <span class="title">app</span>\<span class="title">Providers</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">ServiceProvider</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClassServiceProvider</span> <span class="keyword">extends</span> <span class="title">ServiceProvider</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">register</span><span class="params">()</span>  </span>&#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;app[<span class="string">'MyClass'</span>] = <span class="keyword">$this</span>-&gt;app-&gt;share(</div><div class="line">            <span class="function"><span class="keyword">function</span> <span class="params">($app)</span> </span>&#123;</div><div class="line">                <span class="keyword">return</span> <span class="keyword">new</span> \App\Extensions\MyClass();</div><div class="line">        &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="实现伪静态方法调用"><a href="#实现伪静态方法调用" class="headerlink" title="实现伪静态方法调用"></a><strong>实现伪静态方法调用</strong></h4><p>在 <strong>app/Facades</strong> 目录下创建一个文件 <strong>MyClassFacades.php</strong></p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">namespace app\<span class="type">Facades</span>;</div><div class="line">use <span class="type">Illuminate</span>\<span class="type">Support</span>\<span class="type">Facades</span>\<span class="type">Facade</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClassFacades</span> <span class="keyword">extends</span> <span class="title">Facade</span></span>&#123;</div><div class="line">	<span class="keyword">protected</span> static function getFacadeAccessor()&#123;</div><div class="line">		<span class="keyword">return</span> <span class="symbol">'MyClas</span>s';</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="自动加载并声明一个调用别名"><a href="#自动加载并声明一个调用别名" class="headerlink" title="自动加载并声明一个调用别名"></a><strong>自动加载并声明一个调用别名</strong></h4><p>在 <strong>app/config/app.php</strong> 中的 <strong>providers</strong> 中添加如下配置：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'providers'</span> =&gt; <span class="built_in">array</span>(   </div><div class="line">	<span class="symbol">'app</span>\<span class="type">Providers</span>\<span class="type">MyClassServiceProvider'</span></div><div class="line">),</div></pre></td></tr></table></figure>
+<p>在 <strong>app/config/app.php</strong> 中的 <strong>aliases</strong> 中添加别名：</p>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">'aliases'</span> =&gt; <span class="built_in">array</span>(</div><div class="line">	<span class="symbol">'MyClass'</span> =&gt;  <span class="symbol">'app</span>\<span class="type">Facades</span>\<span class="type">MyClassFacades'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>最后我们就可以在自己的项目中用 <strong>MyClass::run()</strong> 的方式调用自定义类里的函数了。</p>
+<p>上面所有的目录路径和文件名都可以根据自己项目的实际结构进行规划，不一定要按照我上面的路径和文件名来，只要你的目录结构不影响你项目的开发即可。</p>
+<p>如果想详细了解<a href="http://www.golaravel.com/laravel/docs/5.0/facades/" target="_blank" rel="external">Facades</a>,可以查看官方文档的介绍。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-用Hexo搭建Blog 并发布到Github" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/23/用Hexo搭建Blog 并发布到Github/" class="article-date">
+  	<time datetime="2015-09-23T15:25:30.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/09/23/用Hexo搭建Blog 并发布到Github/">用Hexo搭建Blog 并发布到Github</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a><strong>安装Node.js</strong></h6><p>详细安装方法可以直接去<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
+<h6 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install -g hexo-cli</span></div></pre></td></tr></table></figure>
+<h6 id="生成博客页面"><a href="#生成博客页面" class="headerlink" title="生成博客页面"></a><strong>生成博客页面</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo init &lt;本地路径&gt;</span></div><div class="line"><span class="meta"># npm install</span></div><div class="line"><span class="meta"># hexo g</span></div><div class="line"><span class="meta"># hexo s</span></div></pre></td></tr></table></figure>
+<h6 id="预览博客"><a href="#预览博客" class="headerlink" title="预览博客"></a><strong>预览博客</strong></h6><p>在浏览器地址栏里输入<strong><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></strong>就可以预览到我们当前的博客了</p>
+<h6 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a><strong>安装Git</strong></h6><p>详细安装方法可以直接去<a href="http://git-scm.com/download/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
+<h6 id="配置Git密钥"><a href="#配置Git密钥" class="headerlink" title="配置Git密钥"></a><strong>配置Git密钥</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># ssh-keygen -t rsa -C "&lt;你的Github上的邮箱&gt;"</span></div><div class="line"><span class="meta"># ssh-agent -s</span></div><div class="line"><span class="meta"># eval `ssh-agent -s`</span></div><div class="line"><span class="meta"># ssh-add</span></div><div class="line"><span class="meta"># clip &lt; ~/.ssh/id_rsa.pub</span></div></pre></td></tr></table></figure>
+<h6 id="在Github添加SSH-KEY"><a href="#在Github添加SSH-KEY" class="headerlink" title="在Github添加SSH_KEY"></a><strong>在Github添加SSH_KEY</strong></h6><p>点击Github修改个人资料里的<strong><a href="https://github.com/settings/ssh" target="_blank" rel="external">SSH keys</a></strong> -&gt; <strong>Add SSH key</strong>，在KEY选项里粘贴我们刚刚生成的SSH_KEY</p>
+<p><em>如果发现未能粘贴的话，可以执行下面的命令，根据返回找到“id_rsa.pub”文件并复制里面的全部内容即可</em><br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># cygpath -w ~/.ssh</span></div></pre></td></tr></table></figure></p>
+<h6 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a><strong>安装hexo-deployer-git</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install hexo-deployer-git --save</span></div></pre></td></tr></table></figure>
+<h6 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a><strong>修改_config.yml</strong></h6><p>找到 <strong>deploy</strong> 选项，修改成如下格式<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> <span class="params">&lt;你存放在Github的项目地址&gt;</span></div><div class="line"><span class="symbol">  branch:</span> master</div></pre></td></tr></table></figure></p>
+<h6 id="执行部署"><a href="#执行部署" class="headerlink" title="执行部署"></a><strong>执行部署</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo d</span></div></pre></td></tr></table></figure>
+<p>这里再访问你在Github的博客地址，就可以看到更新了。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+  
+</div>
+			  <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jathon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+			</div>
+			
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: true,
+		isPost: false,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+	  </div>
+	</body>
+	</html>

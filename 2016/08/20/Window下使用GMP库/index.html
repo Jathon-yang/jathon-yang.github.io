@@ -1,0 +1,318 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Window下使用GMP库 | Jathon的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="GMP介绍GMP是The GNU MP Bignum Library，是一个开源的数学运算库，它可以用于任意精度的数学运算，包括有符号整数、有理数和浮点数。它本身并没有精度限制，只取决于机器的硬件情况。更多详情可能访问官方网站 https://gmplib.org/ 环境所需软件 MinGW pexports  点击上面两个软件名就能下载对应的安装包，如果下载不了，可以到我的网盘上下载，地址如下：">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Window下使用GMP库">
+<meta property="og:url" content="http://jathon-yang.github.io/2016/08/20/Window下使用GMP库/index.html">
+<meta property="og:site_name" content="Jathon的个人博客">
+<meta property="og:description" content="GMP介绍GMP是The GNU MP Bignum Library，是一个开源的数学运算库，它可以用于任意精度的数学运算，包括有符号整数、有理数和浮点数。它本身并没有精度限制，只取决于机器的硬件情况。更多详情可能访问官方网站 https://gmplib.org/ 环境所需软件 MinGW pexports  点击上面两个软件名就能下载对应的安装包，如果下载不了，可以到我的网盘上下载，地址如下：">
+<meta property="og:updated_time" content="2016-08-20T14:42:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Window下使用GMP库">
+<meta name="twitter:description" content="GMP介绍GMP是The GNU MP Bignum Library，是一个开源的数学运算库，它可以用于任意精度的数学运算，包括有符号整数、有理数和浮点数。它本身并没有精度限制，只取决于机器的硬件情况。更多详情可能访问官方网站 https://gmplib.org/ 环境所需软件 MinGW pexports  点击上面两个软件名就能下载对应的安装包，如果下载不了，可以到我的网盘上下载，地址如下：">
+  
+    <link rel="alternative" href="/atom.xml" title="Jathon的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+	<body>
+		<div id="container">
+			<div class="left-col">
+			<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jathon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+			</div>
+			<div class="mid-col">
+			  <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jathon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jathon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+			  <div class="body-wrap"><article id="post-Window下使用GMP库" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/20/Window下使用GMP库/" class="article-date">
+  	<time datetime="2016-08-20T13:18:35.000Z" itemprop="datePublished">2016-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Window下使用GMP库
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="GMP介绍"><a href="#GMP介绍" class="headerlink" title="GMP介绍"></a><strong>GMP介绍</strong></h4><p>GMP是The GNU MP Bignum Library，是一个开源的数学运算库，它可以用于任意精度的数学运算，包括有符号整数、有理数和浮点数。它本身并没有精度限制，只取决于机器的硬件情况。<br>更多详情可能访问官方网站 <a href="https://gmplib.org/" target="_blank" rel="external">https://gmplib.org/</a></p>
+<h4 id="环境所需软件"><a href="#环境所需软件" class="headerlink" title="环境所需软件"></a><strong>环境所需软件</strong></h4><ul>
+<li><a href="https://sourceforge.net/projects/mingw/files/MinGW/" target="_blank" rel="external">MinGW</a></li>
+<li><a href="https://sourceforge.net/projects/mingw/files/MinGW/Extension/pexports/pexports-0.47/pexports-0.47-mingw32-bin.tar.xz/download" target="_blank" rel="external">pexports</a></li>
+</ul>
+<p>点击上面两个软件名就能下载对应的安装包，如果下载不了，可以到我的网盘上下载，地址如下：<br>链接: <a href="http://pan.baidu.com/s/1slw4YOP" target="_blank" rel="external">http://pan.baidu.com/s/1slw4YOP</a> 密码: 9a2h</p>
+<p>—— 这里是赶时间分割线 ——<br>如果你很赶时间，我网盘上也有已经编译好的.h .lib .dll文件，可以直接下载，当然在这里下载以后，下面的内容也可以不用看了，地址如下：<br>链接: <a href="http://pan.baidu.com/s/1bpaCP0z" target="_blank" rel="external">http://pan.baidu.com/s/1bpaCP0z</a> 密码: kaxw</p>
+<h4 id="安装过程"><a href="#安装过程" class="headerlink" title="安装过程"></a><strong>安装过程</strong></h4><p>1.安装MinGW<br>安装后组件选择”mingw32-base”,”mingw32-gcc-g++”,”mingw32-gmp”<br>安装组件的过程中需要保持网络连接正常。<br>本文假设MinGW的安装路径为默认的路径 C:\MinGW</p>
+<p>2.安装pexports<br>将下载回来的pexports.exe复制进 C:\MinGW\bin</p>
+<p>3.生成lib文件<br>到了这一步，GMP就已经在Windows里安装好了，我们只要将gmp.h和libgmp.lib文件载入我们的VS工程就可以使用GMP库了。<br>gmp.h 位于 C:\MinGW\include 目录下<br>libgmp.lib 则需要我们手动生成，我们可以根据 C:\MinGW\bin\libgmp-10.dll 来生成相应的lib文件，步骤如下：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd <span class="symbol">C:</span>\MinGW\bin</div><div class="line">pexports.exe libgmp-<span class="number">10</span>.dll &gt; libgmp-<span class="number">10</span>.<span class="keyword">def</span></div><div class="line"><span class="class"><span class="keyword">lib</span> /<span class="title">def</span>:<span class="title">libgmp</span>-10.<span class="title">def</span></span></div></pre></td></tr></table></figure>
+<p>这时目录下就会出现 libgmp.lib 文件了。</p>
+<p>如果提示 lib 命令不存在，请将VS的相关路径写入环境变量，比如我的是 C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin</p>
+<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a><strong>使用示例</strong></h4><p>这里我以VS2010做示例，首先我们要将gmp.h和libgmp.lib文件载入工程。<br>代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"gmp.h"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(lib,<span class="meta-string">"libgmp-10.lib"</span>)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">mpz_t</span> t; <span class="comment">//mpz_t 为GMP内置大数类型</span></div><div class="line">	mpz_init(t); <span class="comment">//大数t使用前要进行初始化，以便动态分配空间</span></div><div class="line">	mpz_ui_pow_ui(t, <span class="number">2</span>, <span class="number">100</span>); <span class="comment">//GMP所有函数基本都是以mpz打头</span></div><div class="line">	gmp_printf(<span class="string">"2^100=%Zd\n"</span>, t); <span class="comment">//输出大数，大数的格式化标志为%Zd</span></div><div class="line">	mpz_clear(t);</div><div class="line">	scanf_s(<span class="string">"%s"</span>);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="结语"><a href="#结语" class="headerlink" title="结语"></a><strong>结语</strong></h4><p>写完以后才发现好像也不难，挺简单的，然而我竟然搞了一下午(一不小心就暴露智商了)，那就这样了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/21/使用x-sendfile提升PHP文件下载效率/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          使用x-sendfile提升PHP文件下载效率
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/10/10/Windows下C语言连接Oracle数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Windows下C语言连接Oracle数据库</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+			  <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jathon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+			</div>
+			
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+	  </div>
+	</body>
+	</html>

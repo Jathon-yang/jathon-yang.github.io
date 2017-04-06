@@ -1,0 +1,306 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用Hexo搭建Blog 并发布到Github | Jathon的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装Node.js详细安装方法可以直接去官网查看，安装方法十分简单 安装Hexo1# npm install -g hexo-cli 生成博客页面1234# hexo init &amp;lt;本地路径&amp;gt;# npm install# hexo g# hexo s 预览博客在浏览器地址栏里输入http://localhost:4000就可以预览到我们当前的博客了 安装Git详细安装方法可以直接去官网查">
+<meta name="keywords">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Hexo搭建Blog 并发布到Github">
+<meta property="og:url" content="http://jathon-yang.github.io/2015/09/23/用Hexo搭建Blog 并发布到Github/index.html">
+<meta property="og:site_name" content="Jathon的个人博客">
+<meta property="og:description" content="安装Node.js详细安装方法可以直接去官网查看，安装方法十分简单 安装Hexo1# npm install -g hexo-cli 生成博客页面1234# hexo init &amp;lt;本地路径&amp;gt;# npm install# hexo g# hexo s 预览博客在浏览器地址栏里输入http://localhost:4000就可以预览到我们当前的博客了 安装Git详细安装方法可以直接去官网查">
+<meta property="og:updated_time" content="2015-09-23T16:15:54.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Hexo搭建Blog 并发布到Github">
+<meta name="twitter:description" content="安装Node.js详细安装方法可以直接去官网查看，安装方法十分简单 安装Hexo1# npm install -g hexo-cli 生成博客页面1234# hexo init &amp;lt;本地路径&amp;gt;# npm install# hexo g# hexo s 预览博客在浏览器地址栏里输入http://localhost:4000就可以预览到我们当前的博客了 安装Git详细安装方法可以直接去官网查">
+  
+    <link rel="alternative" href="/atom.xml" title="Jathon的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+	<body>
+		<div id="container">
+			<div class="left-col">
+			<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jathon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+			</div>
+			<div class="mid-col">
+			  <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jathon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jathon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+			  <div class="body-wrap"><article id="post-用Hexo搭建Blog 并发布到Github" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/09/23/用Hexo搭建Blog 并发布到Github/" class="article-date">
+  	<time datetime="2015-09-23T15:25:30.000Z" itemprop="datePublished">2015-09-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Hexo搭建Blog 并发布到Github
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h6 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a><strong>安装Node.js</strong></h6><p>详细安装方法可以直接去<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
+<h6 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install -g hexo-cli</span></div></pre></td></tr></table></figure>
+<h6 id="生成博客页面"><a href="#生成博客页面" class="headerlink" title="生成博客页面"></a><strong>生成博客页面</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo init &lt;本地路径&gt;</span></div><div class="line"><span class="meta"># npm install</span></div><div class="line"><span class="meta"># hexo g</span></div><div class="line"><span class="meta"># hexo s</span></div></pre></td></tr></table></figure>
+<h6 id="预览博客"><a href="#预览博客" class="headerlink" title="预览博客"></a><strong>预览博客</strong></h6><p>在浏览器地址栏里输入<strong><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></strong>就可以预览到我们当前的博客了</p>
+<h6 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a><strong>安装Git</strong></h6><p>详细安装方法可以直接去<a href="http://git-scm.com/download/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
+<h6 id="配置Git密钥"><a href="#配置Git密钥" class="headerlink" title="配置Git密钥"></a><strong>配置Git密钥</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># ssh-keygen -t rsa -C "&lt;你的Github上的邮箱&gt;"</span></div><div class="line"><span class="meta"># ssh-agent -s</span></div><div class="line"><span class="meta"># eval `ssh-agent -s`</span></div><div class="line"><span class="meta"># ssh-add</span></div><div class="line"><span class="meta"># clip &lt; ~/.ssh/id_rsa.pub</span></div></pre></td></tr></table></figure>
+<h6 id="在Github添加SSH-KEY"><a href="#在Github添加SSH-KEY" class="headerlink" title="在Github添加SSH_KEY"></a><strong>在Github添加SSH_KEY</strong></h6><p>点击Github修改个人资料里的<strong><a href="https://github.com/settings/ssh" target="_blank" rel="external">SSH keys</a></strong> -&gt; <strong>Add SSH key</strong>，在KEY选项里粘贴我们刚刚生成的SSH_KEY</p>
+<p><em>如果发现未能粘贴的话，可以执行下面的命令，根据返回找到“id_rsa.pub”文件并复制里面的全部内容即可</em><br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># cygpath -w ~/.ssh</span></div></pre></td></tr></table></figure></p>
+<h6 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a><strong>安装hexo-deployer-git</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install hexo-deployer-git --save</span></div></pre></td></tr></table></figure>
+<h6 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a><strong>修改_config.yml</strong></h6><p>找到 <strong>deploy</strong> 选项，修改成如下格式<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> <span class="params">&lt;你存放在Github的项目地址&gt;</span></div><div class="line"><span class="symbol">  branch:</span> master</div></pre></td></tr></table></figure></p>
+<h6 id="执行部署"><a href="#执行部署" class="headerlink" title="执行部署"></a><strong>执行部署</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo d</span></div></pre></td></tr></table></figure>
+<p>这里再访问你在Github的博客地址，就可以看到更新了。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/10/Laravel导入自定义扩展类/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Laravel导入自定义扩展类</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+			  <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Jathon
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+			</div>
+			
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+	  </div>
+	</body>
+	</html>
