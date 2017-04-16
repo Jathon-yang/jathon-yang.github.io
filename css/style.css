@@ -1095,7 +1095,6 @@ a {
 }
 .article-entry figure table {
   border: none;
-  width: auto;
   margin: 0;
 }
 .article-entry figure table tbody tr:hover {
@@ -1492,7 +1491,6 @@ a {
 }
 .article-entry .highlight table {
   margin: 0;
-  width: auto;
 }
 .article-entry .highlight td {
   border: none;
@@ -1515,6 +1513,11 @@ a {
 .article-entry .highlight figcaption a {
   float: right;
 }
+.article-entry .highlight .gutter {
+  width: 5px;
+  padding: 0 5px;
+n
+}
 .article-entry .highlight .gutter pre {
   text-align: right;
   padding-right: 20px;
@@ -1524,7 +1527,7 @@ a {
 }
 .article-entry .highlight .line {
   font-size: 15px;
-  height: 15px;
+  height: 25px;
 }
 .article-entry .gist {
   margin: 0 -20px;
