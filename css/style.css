@@ -137,7 +137,7 @@ body,
   height: 100%;
 }
 body {
-  font-family: "微软雅黑", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Consolas, "Liberation Mono", Courier, monospace, "\5FAE\8F6F\96C5\9ED1";
   font-size: 16px;
   background: #fff;
   color: rgba(0,0,0,0.6);
@@ -973,7 +973,7 @@ a {
   margin: 0 3px;
   background: #ddd;
   border: 1px solid #ccc;
-  font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+  font-family: Consolas, "Liberation Mono", Courier, monospace, "\5FAE\8F6F\96C5\9ED1";
   word-wrap: break-word;
   font-size: 14px;
 }
@@ -1067,7 +1067,7 @@ a {
   font-size: 10px;
   border: 1px solid #ccc;
   text-shadow: 0 1px #444;
-  font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
+  font-family: Consolas, "Liberation Mono", Courier, monospace, "\5FAE\8F6F\96C5\9ED1";
 }
 .article-entry pre code {
   font-size: 14px;
@@ -1469,7 +1469,7 @@ a {
 }
 .article-entry pre,
 .article-entry code {
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: Consolas, "Liberation Mono", Courier, monospace, "\5FAE\8F6F\96C5\9ED1";
 }
 .article-entry code {
   background: #eee;
@@ -1540,7 +1540,7 @@ n
 }
 .article-entry .gist .gist-file {
   border: none;
-  font-family: "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace;
+  font-family: Consolas, "Liberation Mono", Courier, monospace, "\5FAE\8F6F\96C5\9ED1";
   margin: 0;
 }
 .article-entry .gist .gist-file .gist-data {
