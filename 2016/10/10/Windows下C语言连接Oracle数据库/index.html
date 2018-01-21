@@ -7,13 +7,13 @@
   <title>Windows下C语言连接Oracle数据库 | Jathon的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近公司有个项目需要用到Oracle数据库，我负责前期的调研。由于项目要用到C和PHP两种语言，所以先收集这两种语言连接Oracle的方法。PHP使用的是Laravel框架，直接使用了Laravel-OCI8进行数据库连接，毫无压力的连接成功了。C使用的是Ocilib进行数据库连接，在这里踩了几个坑，卡了几天，今天有空整理下，防止下次继续掉坑。  提示：本文使用的是win7 64位去连接远程的 O">
-<meta name="keywords">
+<meta name="keywords" content="c/c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Windows下C语言连接Oracle数据库">
 <meta property="og:url" content="http://jathon-yang.github.io/2016/10/10/Windows下C语言连接Oracle数据库/index.html">
 <meta property="og:site_name" content="Jathon的个人博客">
 <meta property="og:description" content="最近公司有个项目需要用到Oracle数据库，我负责前期的调研。由于项目要用到C和PHP两种语言，所以先收集这两种语言连接Oracle的方法。PHP使用的是Laravel框架，直接使用了Laravel-OCI8进行数据库连接，毫无压力的连接成功了。C使用的是Ocilib进行数据库连接，在这里踩了几个坑，卡了几天，今天有空整理下，防止下次继续掉坑。  提示：本文使用的是win7 64位去连接远程的 O">
-<meta property="og:updated_time" content="2016-10-10T14:31:04.000Z">
+<meta property="og:updated_time" content="2018-01-21T15:40:01.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Windows下C语言连接Oracle数据库">
 <meta name="twitter:description" content="最近公司有个项目需要用到Oracle数据库，我负责前期的调研。由于项目要用到C和PHP两种语言，所以先收集这两种语言连接Oracle的方法。PHP使用的是Laravel框架，直接使用了Laravel-OCI8进行数据库连接，毫无压力的连接成功了。C使用的是Ocilib进行数据库连接，在这里踩了几个坑，卡了几天，今天有空整理下，防止下次继续掉坑。  提示：本文使用的是win7 64位去连接远程的 O">
@@ -96,7 +96,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/openssl/" style="font-size: 10px;">openssl</a>
+						<a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/php/" style="font-size: 15px;">php</a>
 					</div>
 				</section>
 				
@@ -169,6 +169,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>

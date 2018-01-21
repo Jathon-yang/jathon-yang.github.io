@@ -7,13 +7,13 @@
   <title>使用x-sendfile提升PHP文件下载效率 | Jathon的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="最近做的项目有个工具库模块，需要实现工具的上传与下载。上传与下载都使用的是Laravel内置的方法，本来都没什么问题，今天无意上传了一个两百多M的文件，上传很顺利，但当点击下载时，发现会出现下载回来的数据不全的情况。暂时没找到是什么原因，估计是内存方面的问题。 修改了几次代码后都无法解决，那就只能换一种方式了。多次搜索后，发现了一种直接返回 x-sendfile 头实现文件下载方式，完美的解决了我">
-<meta name="keywords">
+<meta name="keywords" content="Server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用x-sendfile提升PHP文件下载效率">
 <meta property="og:url" content="http://jathon-yang.github.io/2015/10/21/使用x-sendfile提升PHP文件下载效率/index.html">
 <meta property="og:site_name" content="Jathon的个人博客">
 <meta property="og:description" content="最近做的项目有个工具库模块，需要实现工具的上传与下载。上传与下载都使用的是Laravel内置的方法，本来都没什么问题，今天无意上传了一个两百多M的文件，上传很顺利，但当点击下载时，发现会出现下载回来的数据不全的情况。暂时没找到是什么原因，估计是内存方面的问题。 修改了几次代码后都无法解决，那就只能换一种方式了。多次搜索后，发现了一种直接返回 x-sendfile 头实现文件下载方式，完美的解决了我">
-<meta property="og:updated_time" content="2015-10-21T14:41:24.000Z">
+<meta property="og:updated_time" content="2018-01-21T15:38:36.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用x-sendfile提升PHP文件下载效率">
 <meta name="twitter:description" content="最近做的项目有个工具库模块，需要实现工具的上传与下载。上传与下载都使用的是Laravel内置的方法，本来都没什么问题，今天无意上传了一个两百多M的文件，上传很顺利，但当点击下载时，发现会出现下载回来的数据不全的情况。暂时没找到是什么原因，估计是内存方面的问题。 修改了几次代码后都无法解决，那就只能换一种方式了。多次搜索后，发现了一种直接返回 x-sendfile 头实现文件下载方式，完美的解决了我">
@@ -96,7 +96,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/openssl/" style="font-size: 10px;">openssl</a>
+						<a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/php/" style="font-size: 15px;">php</a>
 					</div>
 				</section>
 				
@@ -169,6 +169,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Server/">Server</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
