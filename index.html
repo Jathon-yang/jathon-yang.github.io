@@ -91,7 +91,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 10px;">openssl</a> <a href="/tags/php/" style="font-size: 15px;">php</a>
+						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a>
 					</div>
 				</section>
 				
@@ -140,6 +140,65 @@
 	</div>
 </nav>
 			  <div class="body-wrap">
+  
+    <article id="post-解决OpenSSL在C++:PHP下AES加密结果不一致问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/" class="article-date">
+  	<time datetime="2018-01-23T07:18:30.000Z" itemprop="datePublished">2018-01-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/">解决OpenSSL在C++/PHP下AES加密结果不一致问题</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近公司需要用到AES算法对数据进行加密传输，其中客户端用的是C/C++开发，web端用的是PHP开发。</p>
+<p>C/C++这边使用OpenSSL库实现AES加密，PHP端则使用自带的 openssl_encrypt 实现AES加密，一开始都挺顺利的，到后面对接时才发现两边加密出来的结果不一致，但两边的密钥与初始向量都是一样的。</p>
+<p>经过反复测试后，发现当明文刚好为16个字节的倍数时，则两边加密出来的密文是一致的。最后上网搜了一下资料，发现OpenSSL进行AES加密时，每次只能加密16个字节，所以明文长度必须是16的整数倍，或者至少大于in长度的最小16倍数，这样才能真正完成加密解密。而如果明文长度不足不是16的倍数，那么最后的几个字节，其实相当于填充 \0 。</p>
+<p>既然发现了问题原因，那就好办了，只需要PHP这边在加密前先判断一下明文长度，长度不是16的倍数的，就自动填充 \0   到16的倍数即可。比如长度为15，则填充到16，30则填充到32，以此类推。下面是我的自动填充代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$text = <span class="string">"12345678"</span>;</div><div class="line">$text_len = strlen($text);</div><div class="line">$mod = $text_len%<span class="number">16</span>;</div><div class="line"><span class="keyword">if</span>($mod)&#123;</div><div class="line">  $max = $text_len + (<span class="number">16</span> - $mod);</div><div class="line">  <span class="keyword">for</span>($i=$text_len;$i&lt;$max;$i++)&#123;</div><div class="line">    $text[$i] = <span class="string">"\0"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aes/">aes</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c-c/">c/c++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/openssl/">openssl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Window下编译openssl" class="article article-type-post" itemscope itemprop="blogPost">
   
