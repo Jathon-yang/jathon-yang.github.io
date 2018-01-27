@@ -91,7 +91,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a>
+						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a>
 					</div>
 				</section>
 				
@@ -141,11 +141,110 @@
 </nav>
 			  <div class="body-wrap">
   
+    <article id="post-开启SELinux下启动Mysql(转)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/27/开启SELinux下启动Mysql(转)/" class="article-date">
+  	<time datetime="2018-01-27T07:17:37.000Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/27/开启SELinux下启动Mysql(转)/">开启SELinux下启动Mysql(转)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文转至：<a href="http://blog.51cto.com/morrowind/1854427" target="_blank" rel="external">http://blog.51cto.com/morrowind/1854427</a></p>
+<p><strong>前言：</strong></p>
+<p>今日在部署mysql应用时，遇到mysql无法启动错误</p>
+<p><strong>环境：</strong></p>
+<p>系统：centos 6.8 x64</p>
+<p>mysql：mysql 5.7</p>
+<p><strong>问题：</strong></p>
+<p>采用mysql 官方yum 源安装mysql5.7，安装后修改了my.cnf 默认的datadir 路径为自定义目录。</p>
+<p>启动mysql 报datadir 目录无权限，错误信息如下。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Initializing MySQL database:  mysqld: Can<span class="string">'t create directory '</span>/data/mysql/<span class="string">' (Errcode: 17 - File exists)</span></div><div class="line">2016-09-20T01:51:47.062108Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. </div><div class="line">Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</div><div class="line">2016-09-20T01:51:47.064457Z 0 [ERROR] Aborting</div><div class="line">[FAILED]</div></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong></p>
+<p>确认datadir 目录属主 属组均为mysql 用户，应该不是用户权限的问题，这时想起SELinux 默认是开启状态，会不会是SELinux 的问题，为了确认问题，临时关闭SELINUX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># setenforce 0</div></pre></td></tr></table></figure>
+<p>也可边查看SELINUX 日志边启动mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># tail -f /var/log/audit/audit.log</div></pre></td></tr></table></figure>
+<p>确认确实是SELinux 的原因，那就来修改 datadir 自定义目录的SELinux 标签。</p>
+<p>首先查看默认目录的SElinux 标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># ls -ldZ /var/lib/mysql</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:mysqld_db_t:s0 /var/lib/mysql</div></pre></td></tr></table></figure>
+<p>设置自定义目录的SELINUX 标签为以上值，并确认</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># chcon -Rv -u system_u -t mysqld_db_t /data/mysql</div><div class="line"># ls -ldZ /data/mysql</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:mysqld_db_t:s0 /data/mysql/</div></pre></td></tr></table></figure>
+<p>这样问题应该就解决了，启动mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># service mysqld start</div></pre></td></tr></table></figure>
+<p>晕，居然还是同样的问题，再次查看/data/mysql目录的安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># ls -lZd /data/mysql/</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:default_t:s0   /data/mysql/</div></pre></td></tr></table></figure>
+<p>汗，目录的安全上下文居然变回默认值了，猜测可能是mysql启动时重置了目录的selinux安全上下文。</p>
+<p>那有没有办法修改默认安全上下文的方法呢，只要你能想到的，就肯定是有的。</p>
+<p>使用semanage 修改安全上下文的默认值，具体使用可见 <a href="http://man.linuxde.net/semanage" target="_blank" rel="external">http://man.linuxde.net/semanage</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># semanage fcontext -a -t mysqld_db_t &quot;/data/mysql(/.*)?&quot;</div></pre></td></tr></table></figure>
+<p>接下来在将目录的安全上下文恢复为刚刚设置的默认值即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># restorecon -Rv /data/mysql</div></pre></td></tr></table></figure>
+<p>如果使用的是非默认端口，还需修改端口的安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># semanage port -a -t mysqld_port_t -p tcp port_number</div></pre></td></tr></table></figure>
+<p>需要修改的安全上下文标签值，是什么这里就用什么，此处mysql 用的是mysqld_db_t 如果是http类的，用的就是http_port</p>
+<p>启动还是报同样的错误</p>
+<p>最后要修正下安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># fixfiles restore</div><div class="line">********************************************filespec_add:  conflicting specifications for /var/log/boot.log and /var/spool/plymouth/boot.log, using system_u:object_r:plymouthd_spool_t:s0.</div><div class="line">******************</div></pre></td></tr></table></figure>
+<p>再次启动mysql就可以了</p>
+<p>亦可通过查看selinux 文档确认修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># grep &quot;/data/mysql&quot; /etc/selinux/targeted/contexts/files/file_contexts.local</div><div class="line">/data/mysql(/.*)?    system_u:object_r:mysqld_db_t:s0</div><div class="line">/data/mysql    system_u:object_r:mysqld_db_t:s0</div></pre></td></tr></table></figure>
+<p>按照这种方式推理，直接在file_contexts.local 文件增加自定义目录及对应安全上下文貌似也可以，</p>
+<p>经验证可行，但同样需要执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># fixfiles restore</div></pre></td></tr></table></figure>
+<p><strong>总结：</strong></p>
+<p>遇到系统权限问题时，首先确认用户权限设置是否正确，其次就要想到SELINUX 这个linux系统独有的安全控制</p>
+<p>selinux 太复杂，但在生产环境是一种不错的安全机制</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selinux/">selinux</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-解决OpenSSL在C++:PHP下AES加密结果不一致问题" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/" class="article-date">
-  	<time datetime="2018-01-23T07:18:30.000Z" itemprop="datePublished">2018-01-23</time>
+  	<time datetime="2018-01-23T02:40:37.000Z" itemprop="datePublished">2018-01-23</time>
 </a>
     </div>
   

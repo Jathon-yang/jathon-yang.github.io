@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://jathon-yang.github.io/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/index.html">
 <meta property="og:site_name" content="Jathon的个人博客">
 <meta property="og:description" content="最近公司需要用到AES算法对数据进行加密传输，其中客户端用的是C/C++开发，web端用的是PHP开发。 C/C++这边使用OpenSSL库实现AES加密，PHP端则使用自带的 openssl_encrypt 实现AES加密，一开始都挺顺利的，到后面对接时才发现两边加密出来的结果不一致，但两边的密钥与初始向量都是一样的。 经过反复测试后，发现当明文刚好为16个字节的倍数时，则两边加密出来的密文是一">
-<meta property="og:updated_time" content="2018-01-23T02:33:16.643Z">
+<meta property="og:updated_time" content="2018-01-23T02:40:23.151Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决OpenSSL在C++/PHP下AES加密结果不一致问题">
 <meta name="twitter:description" content="最近公司需要用到AES算法对数据进行加密传输，其中客户端用的是C/C++开发，web端用的是PHP开发。 C/C++这边使用OpenSSL库实现AES加密，PHP端则使用自带的 openssl_encrypt 实现AES加密，一开始都挺顺利的，到后面对接时才发现两边加密出来的结果不一致，但两边的密钥与初始向量都是一样的。 经过反复测试后，发现当明文刚好为16个字节的倍数时，则两边加密出来的密文是一">
@@ -96,7 +96,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a>
+						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a>
 					</div>
 				</section>
 				
@@ -148,7 +148,7 @@
   
     <div class="article-meta">
       <a href="/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/" class="article-date">
-  	<time datetime="2018-01-23T07:18:30.000Z" itemprop="datePublished">2018-01-23</time>
+  	<time datetime="2018-01-23T02:40:37.000Z" itemprop="datePublished">2018-01-23</time>
 </a>
     </div>
   
@@ -204,6 +204,11 @@
       </div>
     </a>
   
+  
+    <a href="/2018/01/27/开启SELinux下启动Mysql(转)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">开启SELinux下启动Mysql(转)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 

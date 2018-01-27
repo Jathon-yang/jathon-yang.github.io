@@ -1,0 +1,335 @@
+
+	<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>开启SELinux下启动Mysql(转) | Jathon的个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文转至：http://blog.51cto.com/morrowind/1854427 前言： 今日在部署mysql应用时，遇到mysql无法启动错误 环境： 系统：centos 6.8 x64 mysql：mysql 5.7 问题： 采用mysql 官方yum 源安装mysql5.7，安装后修改了my.cnf 默认的datadir 路径为自定义目录。 启动mysql 报datadir 目录无权">
+<meta name="keywords" content="selinux,mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开启SELinux下启动Mysql(转)">
+<meta property="og:url" content="http://jathon-yang.github.io/2018/01/27/开启SELinux下启动Mysql(转)/index.html">
+<meta property="og:site_name" content="Jathon的个人博客">
+<meta property="og:description" content="本文转至：http://blog.51cto.com/morrowind/1854427 前言： 今日在部署mysql应用时，遇到mysql无法启动错误 环境： 系统：centos 6.8 x64 mysql：mysql 5.7 问题： 采用mysql 官方yum 源安装mysql5.7，安装后修改了my.cnf 默认的datadir 路径为自定义目录。 启动mysql 报datadir 目录无权">
+<meta property="og:updated_time" content="2018-01-27T06:26:22.782Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="开启SELinux下启动Mysql(转)">
+<meta name="twitter:description" content="本文转至：http://blog.51cto.com/morrowind/1854427 前言： 今日在部署mysql应用时，遇到mysql无法启动错误 环境： 系统：centos 6.8 x64 mysql：mysql 5.7 问题： 采用mysql 官方yum 源安装mysql5.7，安装后修改了my.cnf 默认的datadir 路径为自定义目录。 启动mysql 报datadir 目录无权">
+  
+    <link rel="alternative" href="/atom.xml" title="Jathon的个人博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+	<body>
+		<div id="container">
+			<div class="left-col">
+			<div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Jathon</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+							<li><a href="/licence">博客声明</a></li>
+				        
+						
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+			</div>
+			<div class="mid-col">
+			  <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Jathon</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="http://jathon-yang.github.io/img/avatar.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Jathon</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+					<li><a href="/licence">博客声明</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+			  <div class="body-wrap"><article id="post-开启SELinux下启动Mysql(转)" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/27/开启SELinux下启动Mysql(转)/" class="article-date">
+  	<time datetime="2018-01-27T07:17:37.000Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      开启SELinux下启动Mysql(转)
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selinux/">selinux</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文转至：<a href="http://blog.51cto.com/morrowind/1854427" target="_blank" rel="external">http://blog.51cto.com/morrowind/1854427</a></p>
+<p><strong>前言：</strong></p>
+<p>今日在部署mysql应用时，遇到mysql无法启动错误</p>
+<p><strong>环境：</strong></p>
+<p>系统：centos 6.8 x64</p>
+<p>mysql：mysql 5.7</p>
+<p><strong>问题：</strong></p>
+<p>采用mysql 官方yum 源安装mysql5.7，安装后修改了my.cnf 默认的datadir 路径为自定义目录。</p>
+<p>启动mysql 报datadir 目录无权限，错误信息如下。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Initializing MySQL database:  mysqld: Can<span class="string">'t create directory '</span>/data/mysql/<span class="string">' (Errcode: 17 - File exists)</span></div><div class="line">2016-09-20T01:51:47.062108Z 0 [Warning] TIMESTAMP with implicit DEFAULT value is deprecated. </div><div class="line">Please use --explicit_defaults_for_timestamp server option (see documentation for more details).</div><div class="line">2016-09-20T01:51:47.064457Z 0 [ERROR] Aborting</div><div class="line">[FAILED]</div></pre></td></tr></table></figure>
+<p><strong>解决方案：</strong></p>
+<p>确认datadir 目录属主 属组均为mysql 用户，应该不是用户权限的问题，这时想起SELinux 默认是开启状态，会不会是SELinux 的问题，为了确认问题，临时关闭SELINUX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># setenforce 0</div></pre></td></tr></table></figure>
+<p>也可边查看SELINUX 日志边启动mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># tail -f /var/log/audit/audit.log</div></pre></td></tr></table></figure>
+<p>确认确实是SELinux 的原因，那就来修改 datadir 自定义目录的SELinux 标签。</p>
+<p>首先查看默认目录的SElinux 标签</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># ls -ldZ /var/lib/mysql</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:mysqld_db_t:s0 /var/lib/mysql</div></pre></td></tr></table></figure>
+<p>设置自定义目录的SELINUX 标签为以上值，并确认</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># chcon -Rv -u system_u -t mysqld_db_t /data/mysql</div><div class="line"># ls -ldZ /data/mysql</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:mysqld_db_t:s0 /data/mysql/</div></pre></td></tr></table></figure>
+<p>这样问题应该就解决了，启动mysql</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># service mysqld start</div></pre></td></tr></table></figure>
+<p>晕，居然还是同样的问题，再次查看/data/mysql目录的安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># ls -lZd /data/mysql/</div><div class="line">drwxr-x--x. mysql mysql system_u:object_r:default_t:s0   /data/mysql/</div></pre></td></tr></table></figure>
+<p>汗，目录的安全上下文居然变回默认值了，猜测可能是mysql启动时重置了目录的selinux安全上下文。</p>
+<p>那有没有办法修改默认安全上下文的方法呢，只要你能想到的，就肯定是有的。</p>
+<p>使用semanage 修改安全上下文的默认值，具体使用可见 <a href="http://man.linuxde.net/semanage" target="_blank" rel="external">http://man.linuxde.net/semanage</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># semanage fcontext -a -t mysqld_db_t &quot;/data/mysql(/.*)?&quot;</div></pre></td></tr></table></figure>
+<p>接下来在将目录的安全上下文恢复为刚刚设置的默认值即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># restorecon -Rv /data/mysql</div></pre></td></tr></table></figure>
+<p>如果使用的是非默认端口，还需修改端口的安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># semanage port -a -t mysqld_port_t -p tcp port_number</div></pre></td></tr></table></figure>
+<p>需要修改的安全上下文标签值，是什么这里就用什么，此处mysql 用的是mysqld_db_t 如果是http类的，用的就是http_port</p>
+<p>启动还是报同样的错误</p>
+<p>最后要修正下安全上下文</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># fixfiles restore</div><div class="line">********************************************filespec_add:  conflicting specifications for /var/log/boot.log and /var/spool/plymouth/boot.log, using system_u:object_r:plymouthd_spool_t:s0.</div><div class="line">******************</div></pre></td></tr></table></figure>
+<p>再次启动mysql就可以了</p>
+<p>亦可通过查看selinux 文档确认修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># grep &quot;/data/mysql&quot; /etc/selinux/targeted/contexts/files/file_contexts.local</div><div class="line">/data/mysql(/.*)?    system_u:object_r:mysqld_db_t:s0</div><div class="line">/data/mysql    system_u:object_r:mysqld_db_t:s0</div></pre></td></tr></table></figure>
+<p>按照这种方式推理，直接在file_contexts.local 文件增加自定义目录及对应安全上下文貌似也可以，</p>
+<p>经验证可行，但同样需要执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"># fixfiles restore</div></pre></td></tr></table></figure>
+<p><strong>总结：</strong></p>
+<p>遇到系统权限问题时，首先确认用户权限设置是否正确，其次就要想到SELINUX 这个linux系统独有的安全控制</p>
+<p>selinux 太复杂，但在生产环境是一种不错的安全机制</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/23/解决OpenSSL在C++:PHP下AES加密结果不一致问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          解决OpenSSL在C++/PHP下AES加密结果不一致问题
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+</div>
+			  <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2018 Jathon
+    	</div>
+      	<div class="footer-right">
+          本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/cn/" target="_blank">知识共享署名-非商业性使用 3.0 中国大陆许可协议</a>进行许可。
+      	</div>
+    </div>
+  </div>
+</footer>
+			</div>
+			
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+	  </div>
+	</body>
+	</html>
