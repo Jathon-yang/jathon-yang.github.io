@@ -91,7 +91,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Server/" style="font-size: 13.33px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/openssl/" style="font-size: 13.33px;">openssl</a> <a href="/tags/php/" style="font-size: 16.67px;">php</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a>
+						<a href="/tags/Server/" style="font-size: 15px;">Server</a> <a href="/tags/aes/" style="font-size: 10px;">aes</a> <a href="/tags/c-c/" style="font-size: 20px;">c/c++</a> <a href="/tags/encrypt/" style="font-size: 10px;">encrypt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/openssl/" style="font-size: 15px;">openssl</a> <a href="/tags/php/" style="font-size: 20px;">php</a> <a href="/tags/selinux/" style="font-size: 10px;">selinux</a> <a href="/tags/sqlite3/" style="font-size: 10px;">sqlite3</a>
 					</div>
 				</section>
 				
@@ -140,6 +140,76 @@
 	</div>
 </nav>
 			  <div class="body-wrap">
+  
+    <article id="post-Linux下编译支持Sqlite3加密功能扩展" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/11/29/Linux下编译支持Sqlite3加密功能扩展/" class="article-date">
+  	<time datetime="2018-11-29T07:18:30.000Z" itemprop="datePublished">2018-11-29</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/29/Linux下编译支持Sqlite3加密功能扩展/">Linux下编译支持SQLite3加密扩展</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>自PHP 5.3.0起默认启用SQLite3扩展，但是由于SQLite 3 开源版不带加密功能，如果想使用加密功能需要用他的商业版本。这导致PHP默认的SQLite扩展本身是不支持加密功能，只预留了相关的接口，详见官方文档介绍：</p>
+<blockquote>
+<p>An optional encryption key used when encrypting and decrypting an SQLite database. If the SQLite encryption module is not installed, this parameter will have no effect.</p>
+</blockquote>
+<p>但是如果项目需要用到SQLite，如果不加密，对安全多多少少有一点影响。还好SQLite本身有预留加密的接口，许多爱好者就基于这个接口，实现了加密功能。</p>
+<p>目前比较有知名度的分别是：<a href="https://github.com/utelle/wxsqlite3" target="_blank"><strong>wxsqlite3</strong></a>和<a href="https://github.com/sqlcipher/sqlcipher" target="_blank"><strong>sqlcipher</strong></a>，其中sqlcipher官方有<a href="https://www.zetetic.net/sqlcipher/sqlcipher-for-php/" target="_blank">文档</a>介绍如何实现php的加密SQLite3扩展，而wxsqlite3没有，不过目前知名的数据库管理工具Navicat使用的是wxsqlite3的库实现SQLite3的加密连接，所以为了后续维护的方便，故打算使用wxsqlite3。</p>
+<h3 id="扩展编译教程"><a href="#扩展编译教程" class="headerlink" title="扩展编译教程"></a>扩展编译教程</h3><p>首先你需要确保你没有将SQLite3扩展加入php主程序（编译时使用 <strong>–without-sqlite3</strong> 禁用 SQLite3 扩展），万一不幸加入了，我目前也不知道有什么好办法，感觉重新编译一下就好了。</p>
+<p>到php官网下载相对应的php版本源码(本文以php-7.0.17为例)。</p>
+<p>将下载的源码包放到root目录，并解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar -zxf php-7.0.17.tar.gz</div></pre></td></tr></table></figure>
+<p>进入SQLite3扩展源码目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd php-7.0.17/ext/sqlite3</div></pre></td></tr></table></figure></p>
+<p>将wxsqlite3源码里的 sqlite3secure/src 的所有文件拷贝进 /root/php-7.0.17/ext/sqlite3/libsqlite<br>生成并编辑预编译配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cp config0.m4 config.m4</div><div class="line">vi config.m4</div></pre></td></tr></table></figure></p>
+<p>将config.m4里的 <strong><em>sqlite3_extra_sources=”libsqlite/sqlite3.c”</em></strong> 替换成 <strong><em>sqlite3_extra_sources=”libsqlite/sqlite3secure.c”</em></strong><br>生成预编译文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">phpize</div></pre></td></tr></table></figure></p>
+<p>预编译<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./configure CFLAGS=&quot;-DSQLITE_HAS_CODEC&quot;</div></pre></td></tr></table></figure></p>
+<p>编译并安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
+<p>最后在php.ini里加载编译好的so文件即可，这时php就支持加密版本的SQLite3啦，么么哒。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/encrypt/">encrypt</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sqlite3/">sqlite3</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-开启SELinux下启动Mysql(转)" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -944,68 +1014,10 @@
 
 
   
-    <article id="post-用Hexo搭建Blog 并发布到Github" class="article article-type-post" itemscope itemprop="blogPost">
   
-    <div class="article-meta">
-      <a href="/2015/09/23/用Hexo搭建Blog 并发布到Github/" class="article-date">
-  	<time datetime="2015-09-23T15:25:30.000Z" itemprop="datePublished">2015-09-23</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/23/用Hexo搭建Blog 并发布到Github/">用Hexo搭建Blog 并发布到Github</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="安装Node-js"><a href="#安装Node-js" class="headerlink" title="安装Node.js"></a><strong>安装Node.js</strong></h6><p>详细安装方法可以直接去<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
-<h6 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install -g hexo-cli</span></div></pre></td></tr></table></figure>
-<h6 id="生成博客页面"><a href="#生成博客页面" class="headerlink" title="生成博客页面"></a><strong>生成博客页面</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo init &lt;本地路径&gt;</span></div><div class="line"><span class="meta"># npm install</span></div><div class="line"><span class="meta"># hexo g</span></div><div class="line"><span class="meta"># hexo s</span></div></pre></td></tr></table></figure>
-<h6 id="预览博客"><a href="#预览博客" class="headerlink" title="预览博客"></a><strong>预览博客</strong></h6><p>在浏览器地址栏里输入<strong><a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></strong>就可以预览到我们当前的博客了</p>
-<h6 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a><strong>安装Git</strong></h6><p>详细安装方法可以直接去<a href="http://git-scm.com/download/" target="_blank" rel="external">官网</a>查看，安装方法十分简单</p>
-<h6 id="配置Git密钥"><a href="#配置Git密钥" class="headerlink" title="配置Git密钥"></a><strong>配置Git密钥</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># ssh-keygen -t rsa -C "&lt;你的Github上的邮箱&gt;"</span></div><div class="line"><span class="meta"># ssh-agent -s</span></div><div class="line"><span class="meta"># eval `ssh-agent -s`</span></div><div class="line"><span class="meta"># ssh-add</span></div><div class="line"><span class="meta"># clip &lt; ~/.ssh/id_rsa.pub</span></div></pre></td></tr></table></figure>
-<h6 id="在Github添加SSH-KEY"><a href="#在Github添加SSH-KEY" class="headerlink" title="在Github添加SSH_KEY"></a><strong>在Github添加SSH_KEY</strong></h6><p>点击Github修改个人资料里的<strong><a href="https://github.com/settings/ssh" target="_blank" rel="external">SSH keys</a></strong> -&gt; <strong>Add SSH key</strong>，在KEY选项里粘贴我们刚刚生成的SSH_KEY</p>
-<p><em>如果发现未能粘贴的话，可以执行下面的命令，根据返回找到“id_rsa.pub”文件并复制里面的全部内容即可</em><br><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># cygpath -w ~/.ssh</span></div></pre></td></tr></table></figure></p>
-<h6 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a><strong>安装hexo-deployer-git</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># npm install hexo-deployer-git --save</span></div></pre></td></tr></table></figure>
-<h6 id="修改-config-yml"><a href="#修改-config-yml" class="headerlink" title="修改_config.yml"></a><strong>修改_config.yml</strong></h6><p>找到 <strong>deploy</strong> 选项，修改成如下格式<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repo:</span> <span class="params">&lt;你存放在Github的项目地址&gt;</span></div><div class="line"><span class="symbol">  branch:</span> master</div></pre></td></tr></table></figure></p>
-<h6 id="执行部署"><a href="#执行部署" class="headerlink" title="执行部署"></a><strong>执行部署</strong></h6><figure class="highlight vala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># hexo d</span></div></pre></td></tr></table></figure>
-<p>这里再访问你在Github的博客地址，就可以看到更新了。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </div>
 			  <footer id="footer">
